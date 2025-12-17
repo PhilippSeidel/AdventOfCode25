@@ -9,13 +9,13 @@ with open('input/input') as input:
         distance = int(instruction[1:])
         if instruction[0] == 'L':
             position -= distance
-            old_pos = 100 - old_pos
+            old_pos = (100 - old_pos) % 100
         else:
             position += distance
 
-        zero_passes = math.floor((position + old_pos) / 100)
+        zero_passes = math.floor((distance + old_pos) / 100)
 
         position %= 100
         zero_counter += zero_passes
 
-        print(f'instruction: {instruction}: {old_pos} --> {position}, zero_passes: {zero_passes}, zeros: {zero_counter}')
+        print(f'instruction: {instruction}: new pos: {position}, zero_passes: {zero_passes}, zeros: {zero_counter}')
